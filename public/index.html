@@ -1,1 +1,25 @@
 Hello World!!
+
+<script src="bower_components/jquery/dist/jquery.min.js"></script>
+<script>
+	console.log("Checking the state of jQuery!")
+	if (typeof jQuery == 'undefined') 
+	{
+		console.log("jQuery not loaded");
+	}
+	else
+	{
+		console.log('jQuery Loaded');
+		// Using AJAX to query server and get a UniqueID
+		// http://api.jquery.com/jquery.ajax/
+		$.ajax('/getUniqueID')
+			.done(function(data)
+			{
+				// alert( "success" );
+				console.log(data)
+			})
+			.fail(function() {
+    			alert( "error" );
+  			})
+	}
+</script>

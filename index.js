@@ -6,12 +6,13 @@ var shortid = require('shortid');
 
 // To serve static pages from the server --  https://expressjs.com/en/starter/static-files.html
 app.use('/',express.static('public'));
+app.use('/bower_components',express.static('bower_components'));
 
 
-// app.get('/', function (req, res) {
-//   res.send('Hello World!');
-//   console.log(shortid.generate());
-// });
+app.get('/getUniqueID', function (req, res) {
+  res.send(shortid.generate());
+  console.log(shortid.generate());
+});
 
 
 

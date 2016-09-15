@@ -5,6 +5,8 @@ Augur Technical Challenge
 ## Challenges
 
 ### A. When a device hits a web page, assign a unique ID ​to that device’s browser
+##### Completed Task - A Unique ID is assigned to a device's browser
+
 ### B. When that browser is restarted and the device hits that page again, the browser has the same ID
 ### C. After the browser clears it’s cookies, the browser has the same ID
 ### D. After the browser clears cache, cookies, and all, the browser has the same ID
