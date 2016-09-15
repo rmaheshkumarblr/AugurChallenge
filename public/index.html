@@ -23,10 +23,10 @@ Hello World!!
 				$.ajax({
 					url: '/sendUniqueID/' + uniqueID
 				})
-				.done(function(data)
+				.done(function(data1)
 				{
-					uniqueID = data;
-					// console.log(data);
+					uniqueID = data1;
+					console.log(data1);
 				})
 				.fail(function(){
 					alert( "error at the post request" );

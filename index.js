@@ -11,7 +11,7 @@ app.use('/bower_components',express.static('bower_components'));
 
 
 var ipToUniqueIDMapping = {}
-
+var uniqueIDToipMapping = {}
 
 app.get('/getUniqueID', function (req, res) {
   // Based on https://www.chromium.org/Home/chromium-security/client-identification-mechanisms
@@ -22,12 +22,14 @@ app.get('/getUniqueID', function (req, res) {
   // console.log(req.headers);
   // console.log(req.root);
 
+  // Populating the IP as key and generating a new value for it, which is Unique 
   if(! ( req.ip in ipToUniqueIDMapping ) )
   {
   	ipToUniqueIDMapping[req.ip] = shortid.generate(); 
   }
 
   console.log(ipToUniqueIDMapping)
+  console.log(uniqueIDToipMapping)
 
   if (req.headers['if-modified-since']) 
   {
@@ -47,9 +49,48 @@ app.get('/getUniqueID', function (req, res) {
 });
 
 app.get('/sendUniqueID/:uniqueID', function(req, res) {
-  var uniqueID = req.params.uniqueID;
-  console.log(uniqueID)
-  return res.status(304).end();
+
+  // Populating the uniqueID as key and IP is the value
+	if ( ! (req.params.uniqueID in uniqueIDToipMapping) )
+	{
+  		uniqueIDToipMapping[req.params.uniqueID] = req.ip;
+  	}
+
+  	// Case 1
+  	// IP address changes but the UniqueID is the same
+  	// We need to update the IP in the ipToUniqueIDMapping
+  	// Find the key for which the value is the UniqueID see if the current requested IP is the same else remove that key and add new key
+	
+  	// https://stackoverflow.com/questions/9907419/javascript-object-get-key-by-value
+  	// Objects have issue when used in NodeJS hence creating a function ( https://github.com/npm/npm/issues/11515 )
+	function getKeyGivenValue( objectName, value ) 
+	{
+		for( var prop in objectName ) 
+		{
+    		if( objectName.hasOwnProperty( prop ) ) 
+    		{
+    		    if( objectName[ prop ] === value )
+    		    {
+    		             return prop;
+    		    }
+    		}
+    	}
+    }
+
+
+	var ipInTheExistingDict = getKeyGivenValue(ipToUniqueIDMapping,req.params.uniqueID)
+	if (  ipInTheExistingDict != req.ip )
+	{
+		delete ipToUniqueIDMapping[ipInTheExistingDict];
+		ipToUniqueIDMapping[req.ip] = req.params.uniqueID 
+	}
+
+	// Case 2
+	// Unique ID changes from the same IP (Must normally never happen so ignoring it)
+
+	var uniqueID = req.params.uniqueID;
+	console.log(uniqueID)
+	return res.status(200).send(req.params.uniqueID);
 });
 
 
