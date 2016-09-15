@@ -26,3 +26,14 @@ Augur Technical Challenge
 
 ### G. Running your software at web scale, no two devices share an ID
 ### This is very tough since we can't get too much information about the device information from the request. If we were able to get vendorID / MAC Address it would be useful. In my case since I am testing from my laptop which has a different local ip from that of the phone, it worked but in real world it becomes really tough because the request object does not have too many parameter that can be used to uniquely identify the hardware.
+
+######## Steps to get it working 
+`
+git clone git@github.com:rmaheshkumarblr/AugurChallenge.git
+// Install node from the website (Latest version)
+// Install npm
+// From the project folder
+npm install
+bower install
+nodemon index.js
+`
