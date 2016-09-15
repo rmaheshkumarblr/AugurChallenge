@@ -17,7 +17,8 @@ Augur Technical Challenge
 ##### Completed Task - Using the IP address to map the Unique ID to the IP address and vice-vera (Since Routers exists, It is more like doing at Household level rather than a particular user)
 
 ### E. More than one browser (Chrome, Firefox, Opera, IE, Safari, etc.) on the device share the same ID
-##### Completed Task - Since I am using the IP address to map the Unique ID to the IP address and vice-vera. For any ip it gives the same ID. 
+##### Completed Task - Since I am using the IP address to map the Unique ID to the IP address and vice-vera. For same ip it gives the same ID. 
+#### Incase the IP changes, the same ID is provided
 #### ( Need to consider mapping multiple ips to same user id since he/she may have a phone with different ip )
 
 ### F. Repeat tests A-to-E on another device and have it pass all tests
