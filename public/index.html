@@ -2,6 +2,7 @@ Hello World!!
 
 <script src="bower_components/jquery/dist/jquery.min.js"></script>
 <script>
+	var uniqueID = "";
 	console.log("Checking the state of jQuery!")
 	if (typeof jQuery == 'undefined') 
 	{
@@ -12,14 +13,27 @@ Hello World!!
 		console.log('jQuery Loaded');
 		// Using AJAX to query server and get a UniqueID
 		// http://api.jquery.com/jquery.ajax/
-		$.ajax('/getUniqueID')
+		$.ajax({
+			url: '/getUniqueID'
+			})
 			.done(function(data)
 			{
-				// alert( "success" );
-				console.log(data)
+				uniqueID = data;
+				console.log(data);
+				$.ajax({
+					url: '/sendUniqueID/' + uniqueID
+				})
+				.done(function(data)
+				{
+					uniqueID = data;
+					// console.log(data);
+				})
+				.fail(function(){
+					alert( "error at the post request" );
+				})
 			})
 			.fail(function() {
-    			alert( "error" );
+    			alert( "error at the get request" );
   			})
 	}
 </script>
