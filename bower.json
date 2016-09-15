@@ -1,0 +1,24 @@
+{
+  "name": "AugurChallenge",
+  "homepage": "https://github.com/rmaheshkumarblr/AugurChallenge",
+  "authors": [
+    "rmaheshkumarblr <rmaheshkumarblr@gmail.com>"
+  ],
+  "description": "Augur Technical Challenge",
+  "main": "",
+  "moduleType": [
+    "node"
+  ],
+  "keywords": [
+    "Node",
+    "Javascript"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}

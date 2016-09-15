@@ -1,0 +1,29 @@
+{
+  "name": "augur-challenge",
+  "version": "1.0.0",
+  "description": "Augur Technical Challenge",
+  "main": "index.js",
+  "dependencies": {
+    "express": "^4.14.0",
+    "node": "6.5.0",
+    "shortid": "^2.2.6"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/rmaheshkumarblr/AugurChallenge.git"
+  },
+  "keywords": [
+    "nodejs",
+    "javascript"
+  ],
+  "author": "Mahesh Kumar Ravindranathan",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/rmaheshkumarblr/AugurChallenge/issues"
+  },
+  "homepage": "https://github.com/rmaheshkumarblr/AugurChallenge"
+}
